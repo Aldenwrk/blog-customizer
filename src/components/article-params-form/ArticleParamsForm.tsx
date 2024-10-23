@@ -8,6 +8,7 @@ import {
 	ArticleStateType,
 	backgroundColors,
 	contentWidthArr,
+	defaultArticleState,
 	fontColors,
 	fontFamilyOptions,
 	fontSizeOptions,
@@ -32,6 +33,11 @@ export const ArticleParamsForm = ({
 
 	const handleChange = (key: keyof ArticleStateType, value: OptionType) => {
 		setTempState({ ...tempState, [key]: value });
+	};
+
+	const handleReset = () => {
+		setTempState(defaultArticleState);
+		setCurrentState(defaultArticleState);
 	};
 
 	return (
@@ -83,7 +89,12 @@ export const ArticleParamsForm = ({
 					/>
 
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' htmlType='reset' type='clear' />
+						<Button
+							title='Сбросить'
+							htmlType='reset'
+							type='clear'
+							onClick={handleReset}
+						/>
 						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
 				</form>
